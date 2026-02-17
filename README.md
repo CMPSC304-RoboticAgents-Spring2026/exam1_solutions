@@ -115,11 +115,15 @@
 
 **ANSWER:** The robot curves right because the left wheel travels less distance than the right wheel. In differential-drive kinematics, unequal wheel distances cause rotation. This indicates the left wheel is slipping, has a smaller effective diameter, or the motors have different speeds despite the same command.
 
-**b) Describe TWO ways you could fix this problem to make the robot move straight:**
+*Note: The fact that the robot curves (rather than spins in place) tells us both wheels are moving forward but at different rates. If motors were reversed or pins incorrectly connected, we'd see spinning rather than curving. An off-center center of mass could contribute to unequal wheel performance through weight distribution, but the direct observation is that the wheels have unequal speeds/distances.*
 
-**Solution 1:** Calibrate the motors - measure actual wheel speeds with encoders and adjust PWM values to compensate for differences.
+**b) Describe one way you could fix this problem to make the robot move straight:**
 
-**Solution 2:** Implement closed-loop feedback control using encoder readings to continuously adjust motor speeds to maintain equal wheel velocities.
+**Sample Solution 1:** Calibrate the motors - measure actual wheel speeds with encoders and adjust PWM values to compensate for differences (e.g., if left wheel is slower, increase its PWM).
+
+**Sample Solution 2:** Use encoder feedback in a control loop - continuously read encoder values and adjust motor speeds in real-time to keep wheel velocities equal.
+
+**Sample Solution 3:** Check for mechanical issues - ensure wheels have equal diameters, check for debris or friction differences, and verify both motors are functioning properly.
 
 ---
 
@@ -127,25 +131,8 @@
 
 **a) Explain how the position of the center of mass affects the robot's stability on the slope. Where should you place the payload?**
 
-**ANSWER:** The center of mass must remain within the support polygon (area between the wheels/contact points). On a slope, gravity pulls the CoM backward, potentially causing backward tipping. Place the payload LOW and FORWARD to keep the CoM as low and forward as possible, increasing stability.
+**ANSWER:** The center of mass must remain within the support polygon (area between the wheels/contact points). On a slope, gravity pulls the center of mass backward, potentially causing backward tipping. Place the payload LOW and FORWARD to keep the center of mass as low and forward as possible, increasing stability.
 
 **b) How does static stability apply to this scenario? What determines whether the robot will tip backward while climbing?**
 
-**ANSWER:** Static stability requires the vertical projection of the center of mass to fall within the support polygon. The robot will tip backward if the CoM shifts too far back such that its projection moves behind the rear wheels. A lower CoM and longer wheelbase help prevent tipping.
-
----
-
-## Summary
-
-**Total Points:** 10
-
-### Key Concepts Covered:
-- Static vs. dynamic stability
-- Proprioceptive vs. exteroceptive sensors
-- Arduino PWM and duty cycles
-- Sensor accuracy vs. precision
-- Degrees of freedom (rotational and Cartesian)
-- Power requirements and motor drivers
-- Ultrasonic vs. infrared sensors
-- Differential-drive kinematics
-- Center of mass and stability on slopes
+**ANSWER:** Static stability requires the vertical projection of the center of mass to fall within the support polygon. The robot will tip backward if the center of mass shifts too far back such that its projection moves behind the rear wheels. A lower center of mass and longer wheelbase help prevent tipping.
